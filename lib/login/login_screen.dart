@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.bottomLeft,
               child: Text("Welcome Back !",
                   style: Theme.of(context).textTheme.headline4?.copyWith(
-                      color: Colors.teal.shade300,
+                      color:Colors.white,
                       fontWeight: FontWeight.bold)),
             ),
             Container(
@@ -33,41 +33,41 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: Theme.of(context)
                       .textTheme
                       .headline6
-                      ?.copyWith(color: Colors.teal.shade300)),
+                      ?.copyWith(color: Colors.white)),
             ),
             Container(
               margin: EdgeInsets.only(top: 5.h),
               child: Icon(
                 Icons.person_pin,
                 size: 48.sp,
-                color: Colors.purple.shade100,
+                color: Colors.white,
               ),
             ),
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
-                  style: TextStyle(color: Colors.teal.shade600),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.email_outlined,
-                        color: Colors.purple.shade100,
+                        color: Colors.white,
                       ),
                       border: OutlineInputBorder(),
                       hintText: "Email",
-                      hintStyle: TextStyle(color: Colors.purple.shade300)),
+                      hintStyle: TextStyle(color: Colors.white)),
                 )),
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
-                  style: TextStyle(color: Colors.teal.shade600),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
                         Icons.password,
-                        color: Colors.purple.shade100,
+                        color: Colors.white,
                       ),
                       border: OutlineInputBorder(),
                       hintText: "Password",
-                      hintStyle: TextStyle(color: Colors.purple.shade300)),
+                      hintStyle: TextStyle(color: Colors.white)),
                 )),
             Container(
               margin: EdgeInsets.only(top: 2.h),
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 5.h,
               width: 30.w,
               decoration: BoxDecoration(
-                  color: Colors.purple.shade300,
+                  color: Colors.teal,
                   borderRadius: BorderRadius.circular(20.sp)),
               child: Text(
                 "Log in",
@@ -92,12 +92,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 5.h,
                 width: 20.w,
                 decoration: BoxDecoration(
-                    color: Colors.teal.shade100,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(20.sp)),
                 child: Text(
                   "Sing Up",
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
               onTap: () {

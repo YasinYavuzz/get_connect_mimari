@@ -3,7 +3,11 @@ import 'package:firebase_login_example/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-void main() {
+import 'di.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await DenpendencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -16,9 +20,7 @@ class MyApp extends StatelessWidget {
        return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData.dark(),
         home: LoginScreen()
       );
     },
