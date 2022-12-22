@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20.sp)),
                 child: Text(
-                  "Sing Up",
+                  "Signgmail.com Up",
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),

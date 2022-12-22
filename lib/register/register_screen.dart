@@ -1,3 +1,4 @@
+import 'package:firebase_login_example/shared/service/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,14 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
+
+
 class _RegisterScreenState extends State<RegisterScreen> {
+//final TextEditingController _usernameController = TextEditingController();
+final TextEditingController _emailController = TextEditingController();
+final TextEditingController _passwordController = TextEditingController();
+//final TextEditingController _numberController = TextEditingController(); 
+final AuthService _authService=AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
+                 // controller: _usernameController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -52,6 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
+                  controller: _emailController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -65,6 +75,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
+
+                  controller: _passwordController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -78,6 +90,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
+                  //controller: _numberController,
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   style: TextStyle(color: Colors.white),
@@ -90,21 +103,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       hintText: "Contact Number",
                       hintStyle: TextStyle(color: Colors.white)),
                 )),
-            Container(
-              margin: EdgeInsets.only(top: 2.h),
-              alignment: Alignment.center,
-              height: 5.h,
-              width: 30.w,
-              decoration: BoxDecoration(
-                  color: Colors.teal,
-                  borderRadius: BorderRadius.circular(17.sp)),
-              child: Text(
-                "Sing up",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText2!
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            GestureDetector(
+              child: Container(
+                margin: EdgeInsets.only(top: 2.h),
+                alignment: Alignment.center,
+                height: 5.h,
+                width: 30.w,
+                decoration: BoxDecoration(
+                    color: Colors.teal,
+                    borderRadius: BorderRadius.circular(17.sp)),
+                child: Text(
+                  "Sign up",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText2!
+                      .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                ),
               ),
+              onTap: () {
+                _authService.createUser(_emailController.text, _passwordController.text);
+              },
             ),
             GestureDetector(
               child: Container(
