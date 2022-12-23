@@ -1,6 +1,8 @@
-import 'package:firebase_login_example/login/login_screen.dart';
-import 'package:firebase_login_example/register/register_screen.dart';
+import 'package:firebase_login_example/modul/login/login_screen.dart';
+import 'package:firebase_login_example/modul/register/register_screen.dart';
+import 'package:firebase_login_example/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'di.dart';
@@ -17,11 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
-       return MaterialApp(
+       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
+        initialRoute: Routes.LOGIN,
+      enableLog: true,
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
-        home: LoginScreen()
+        getPages: AppPages.routes,
       );
     },
      

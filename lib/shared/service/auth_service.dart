@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
 class AuthService extends GetxService {
   Future<AuthService> init() async {
-   // createUser();
     return this;
   }
   createUser(email, password) async {
@@ -26,5 +25,21 @@ class AuthService extends GetxService {
   }
 }
 
+
+acount(email, password) async {
+try {
+  final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+    email: email,
+    password: password
+  );
+  print("giriş başarili");
+} on FirebaseAuthException catch (e) {
+  if (e.code == 'user-not-found') {
+    print('No user found for that email.');
+  } else if (e.code == 'wrong-password') {
+    print('Wrong password provided for that user.');
+  }
+}
+}
 }
 

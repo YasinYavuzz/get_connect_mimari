@@ -1,26 +1,19 @@
+import 'package:firebase_login_example/modul/register/register_controller.dart';
+import 'package:firebase_login_example/routes/app_pages.dart';
 import 'package:firebase_login_example/shared/service/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../login/login_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class RegisterScreen extends GetView<RegisterController> {
+   RegisterScreen({super.key});
 
-  @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
-}
-
-
-
-class _RegisterScreenState extends State<RegisterScreen> {
-//final TextEditingController _usernameController = TextEditingController();
-final TextEditingController _emailController = TextEditingController();
-final TextEditingController _passwordController = TextEditingController();
-//final TextEditingController _numberController = TextEditingController(); 
 final AuthService _authService=AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +54,7 @@ final AuthService _authService=AuthService();
             Container(
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
-                  controller: _emailController,
+                  controller: controller.emailController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -76,7 +69,7 @@ final AuthService _authService=AuthService();
                 margin: EdgeInsets.only(right: 2.w, left: 2.w, top: 2.h),
                 child: TextField(
 
-                  controller: _passwordController,
+                  controller: controller.passwordController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                       prefixIcon: Icon(
@@ -121,7 +114,7 @@ final AuthService _authService=AuthService();
                 ),
               ),
               onTap: () {
-                _authService.createUser(_emailController.text, _passwordController.text);
+               controller.registerr();
               },
             ),
             GestureDetector(
@@ -140,11 +133,7 @@ final AuthService _authService=AuthService();
                 ),
               ),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LoginScreen(),
-                    ));
+                Get.toNamed(Routes.LOGIN);
               },
             ),
           ],
