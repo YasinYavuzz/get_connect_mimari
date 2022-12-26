@@ -1,12 +1,13 @@
+import 'package:firebase_login_example/modul/bloc/blog_binding.dart';
 import 'package:firebase_login_example/modul/login/login_binding.dart';
 import 'package:firebase_login_example/modul/login/login_screen.dart';
 import 'package:firebase_login_example/modul/register/register_binding.dart';
 import 'package:firebase_login_example/modul/register/register_screen.dart';
 import 'package:get/get.dart';
 
+import '../modul/bloc/blog_screen.dart';
 import '../modul/home/home_binding.dart';
 import '../modul/home/home_screen.dart';
-
 
 part 'app_routes.dart';
 
@@ -29,5 +30,10 @@ class AppPages {
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
+    GetPage(
+      name: Routes.BLOC,
+      page: () => BlocScreen(),
+      binding: BlocBinding()
+    )
   ];
 }
