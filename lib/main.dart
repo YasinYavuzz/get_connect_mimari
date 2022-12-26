@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(builder: (context, orientation, screenType) {
        return GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.LOGIN,
+        initialRoute: Routes.HOME,
       enableLog: true,
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
