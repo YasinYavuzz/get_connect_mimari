@@ -1,11 +1,12 @@
+import 'package:firebase_login_example/modul/bloc/blog_controller.dart';
 import 'package:firebase_login_example/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class BlocScreen extends StatelessWidget {
-  const BlocScreen({super.key});
+class BlogScreen extends GetView<BlogController>{
+  const BlogScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class BlocScreen extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(top: 2.h, right: 2.w, left: 2.w),
                 child: TextFormField(
+                  controller: controller.baslikController,
                     decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Topic",
@@ -29,6 +31,7 @@ class BlocScreen extends StatelessWidget {
             Container(
                 margin: EdgeInsets.only(top: 2.h, right: 2.w, left: 2.w, bottom: 2.h),
                 child: TextFormField(
+                  controller: controller.icerikController,
                   maxLines: 16,
                     decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -44,6 +47,7 @@ class BlocScreen extends StatelessWidget {
                 child: Text("POST", style: Theme.of(context).textTheme.bodyText2,),
               ),
               onTap: () {
+                controller.firestoreadd();
                 Get.toNamed(Routes.HOME
                         );            },
             ),

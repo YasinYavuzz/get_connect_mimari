@@ -1,11 +1,13 @@
+import 'package:firebase_login_example/modul/bloc/blog_binding.dart';
 import 'package:firebase_login_example/modul/bloc/blog_screen.dart';
+import 'package:firebase_login_example/modul/home/home_controller.dart';
 import 'package:firebase_login_example/routes/app_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController>{
   const HomeScreen({super.key});
 
   @override
@@ -13,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Home",
+          controller.liste.length.toString(),
           style: Theme.of(context).textTheme.headline5,
         ),
       ),
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           //physics: NeverScrollableScrollPhysics(),
-          itemCount: 10,
+          itemCount: controller.liste.length,
           itemBuilder: (context, index) {
             return Container(
               margin: EdgeInsets.only(top: 1.h, right: 2.w, left: 2.w),
@@ -36,31 +38,26 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      GestureDetector(
-                        child: Container(
-                            height: 10.h,
-                            width: 10.h,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.h),
-                                border: Border.all(
-                                    width: 0.3.w, color: Colors.red.shade800),
-                                image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: NetworkImage(
-                                        "https://i.pinimg.com/550x/79/42/24/794224be7ac8235184c1f69c66554075.jpg"))
-                                        )
-                                        ),onTap: () {
-                                        Get.toNamed(Routes.BLOC);
-                                         // Navigator.push(context, MaterialPageRoute(builder: (context) => BlocScreen(),));
-                                        },
-                      ),
+                      Container(
+                          height: 10.h,
+                          width: 10.h,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.h),
+                              border: Border.all(
+                                  width: 0.3.w, color: Colors.red.shade800),
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                      "https://i.pinimg.com/550x/79/42/24/794224be7ac8235184c1f69c66554075.jpg"))
+                                      )
+                                      ),
                       Container(
                         padding: EdgeInsets.only(left: 2.w),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Konu Başlığı"),
-                            Text("Yazar"),
+                            Text(controller.liste[index]["title"]),
+                            Text(controller.liste[index]["content"]),
                           ],
                         ),
                       ),
@@ -80,6 +77,15 @@ class HomeScreen extends StatelessWidget {
             );
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.red,
+        child: const Icon(Icons.add,color: Colors.white,),
+        onPressed: () {
+          Get.toNamed(Routes.BLOG);
+   //  Get.to(BlogScreen(),binding: BlogBinding());
+    //  Get.to(BlogScreen());
+      },
       ),
     );
   }

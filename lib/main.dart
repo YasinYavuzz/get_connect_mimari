@@ -1,3 +1,4 @@
+import 'package:firebase_login_example/modul/home/home_binding.dart';
 import 'package:firebase_login_example/modul/login/login_screen.dart';
 import 'package:firebase_login_example/modul/register/register_screen.dart';
 import 'package:firebase_login_example/routes/app_pages.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
        return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.HOME,
+       //initialBinding: HomeBinding(),
       enableLog: true,
         title: 'Flutter Demo',
         theme: ThemeData.dark(),

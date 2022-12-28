@@ -31,9 +31,9 @@ class AppPages {
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.BLOC,
-      page: () => BlocScreen(),
-      binding: BlocBinding()
+      name: Routes.BLOG,
+      page: () => BlogScreen(),
+      binding: BlogBinding()
     )
   ];
 }
