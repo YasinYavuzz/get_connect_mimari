@@ -1,3 +1,4 @@
+import 'package:firebase_login_example/app_binding.dart';
 import 'package:firebase_login_example/modul/home/home_binding.dart';
 import 'package:firebase_login_example/modul/login/login_screen.dart';
 import 'package:firebase_login_example/modul/register/register_screen.dart';
@@ -8,7 +9,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'di.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DenpendencyInjection.init();
   runApp(const MyApp());
@@ -19,18 +20,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveSizer(builder: (context, orientation, screenType) {
-       return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        initialRoute: Routes.HOME,
-       //initialBinding: HomeBinding(),
-      enableLog: true,
-        title: 'Flutter Demo',
-        theme: ThemeData.dark(),
-        getPages: AppPages.routes,
-      );
-    },
-     
+    return ResponsiveSizer(
+      builder: (context, orientation, screenType) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.HOME,
+          initialBinding: AppBinding(),
+          enableLog: true,
+          title: 'Flutter Demo',
+          theme: ThemeData.dark(),
+          getPages: AppPages.routes,
+        );
+      },
     );
   }
 }
